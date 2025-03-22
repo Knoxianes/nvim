@@ -21,12 +21,14 @@ return {
     require("custom.plugins.rest"),
     require("custom.plugins.oil"),
     require("custom.plugins.start-screen"),
-    require('custom.plugins.conform'),
+    -- require('custom.plugins.conform'),
     require('custom.plugins.template-string'),
     require('custom.plugins.tsc'),
     require('custom.plugins.ts-error-translator'),
     require('custom.plugins.nvim-highlight-colors'),
     require('custom.plugins.nvim-spider'),
+
+    require('custom.plugins.leet'),
 
 
     'tpope/vim-rhubarb',

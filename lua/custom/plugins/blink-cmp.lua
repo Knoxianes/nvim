@@ -2,7 +2,6 @@ return {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
     dependencies = {
-        'rafamadriz/friendly-snippets',
         "mikavilpas/blink-ripgrep.nvim",
         { 'L3MON4D3/LuaSnip', version = 'v2.*' },
     },
@@ -73,7 +72,7 @@ return {
             default = { 'lsp', 'path', 'snippets', 'buffer', "lazydev" },
             providers = {
                 lsp = {
-                    fallback_for = { "lazydev" },
+                    fallbacks = { "lazydev" },
                     min_keyword_length = 2
                 },
                 lazydev = {
