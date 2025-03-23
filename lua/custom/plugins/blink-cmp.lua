@@ -3,11 +3,11 @@ return {
     -- optional: provides snippets for the snippet source
     dependencies = {
         "mikavilpas/blink-ripgrep.nvim",
-        { 'L3MON4D3/LuaSnip', version = 'v2.*' },
     },
+    build = 'cargo +nightly build --release',
 
     -- use a release tag to download pre-built binaries
-    version = 'v0.*',
+    version = '*',
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -36,6 +36,14 @@ return {
                 end,
             },
 
+        },
+        fuzzy = {
+            implementation = "prefer_rust_with_warning",
+            sorts = {
+                "exact",
+                "score",
+                "sort_text",
+            },
         },
         completion = {
             keyword = {
