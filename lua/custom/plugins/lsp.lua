@@ -46,6 +46,19 @@ return {
                     vim.api.nvim_create_autocmd('BufWritePre', {
                         buffer = event.buf,
                         callback = function()
+                            local filetype = vim.bo[event.buf].filetype
+                            local conform_filetypes = {
+                                javascript = true,
+                                javascriptreact = true,
+                                typescript = true,
+                                typescriptreact = true,
+                                python = true,
+                            }
+
+                            if conform_filetypes[filetype] then
+                                return
+                            end
+
                             require('mini.trailspace').trim()
                             require('mini.trailspace').trim_last_lines()
                             vim.lsp.buf.format({ bufnr = event.buf, id = client.id, async = true })
