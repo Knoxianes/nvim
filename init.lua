@@ -53,3 +53,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.jsx", "*.tsx", "*.ts" },
+    callback = function(args)
+        vim.cmd("LspEslintFixAll");
+    end,
+})
+
+-- [[ Load project specific configuration ]]
+local project_config = vim.fn.getcwd() .. "/.nvim.lua"
+if vim.fn.filereadable(project_config) == 1 then
+    dofile(project_config)
+end

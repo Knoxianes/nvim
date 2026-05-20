@@ -7,6 +7,6 @@ return {
     },
     cmd = "Leet",
     opts = {
-        lang = "golang",
+        lang = "typescript",
     },
 }

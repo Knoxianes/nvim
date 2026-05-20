@@ -81,6 +81,7 @@ return {
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
+        -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
         --  Add any additional override configuration in the following tables. Available keys are:
         --  - cmd (table): Override the default command used to start the server
@@ -101,7 +102,13 @@ return {
                     },
                 },
             },
-            ts_ls = {},
+            ts_ls = {
+                settings = {
+                    implicitProjectConfiguration = {
+                        checkJs = true
+                    },
+                },
+            },
             prettier = {
             },
             pyright = {
@@ -115,17 +122,17 @@ return {
                     },
                 }
             },
-            html = {
-                format = {
-                    templating = true,
-                    wrapLineLength = 120,
-                    wrapAttributes = 'auto',
-                },
-                hover = {
-                    documentation = true,
-                    references = true,
-                },
-            },
+            -- html = {
+            --     format = {
+            --         templating = true,
+            --         wrapLineLength = 120,
+            --         wrapAttributes = 'auto',
+            --     },
+            --     hover = {
+            --         documentation = true,
+            --         references = true,
+            --     },
+            -- },
             gopls = {
                 settings = {
                     gopls = {
@@ -141,12 +148,9 @@ return {
             },
             terraformls = {},
             eslint = {
-                on_attach = function(client, bufnr)
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        buffer = bufnr,
-                        command = "EslintFixAll",
-                    })
-                end,
+                settings = {
+                    autoFixOnSave = true,
+                },
             },
             tailwindcss = {},
             jsonls = {},

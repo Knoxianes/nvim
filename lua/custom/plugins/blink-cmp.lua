@@ -54,6 +54,7 @@ return {
                 show_on_blocked_trigger_characters = { ' ', '\n', '\t', ';', ':', '{', '(', '[', ']', ')', '}', ',' },
 
             },
+            accept = { auto_brackets = { enabled = false }, },
             menu = {
                 auto_show = true,
                 draw = {
